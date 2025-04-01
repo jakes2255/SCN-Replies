@@ -6,3 +6,11 @@ oCrossAppNav.toExternal({
 });
 
 //
+onAfterSave: function(oContext) {
+    var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
+    oCrossAppNav.toExternal({
+        target: { semanticObject: "AppA", action: "display" },
+        params: { docId: oContext.getObject().ID }
+    });
+}
+
