@@ -5,7 +5,7 @@ oCrossAppNav.toExternal({
     params: { docId: "12345", editMode: "true" }
 });
 
-//
+//navigate back after saving.
 onAfterSave: function(oContext) {
     var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
     oCrossAppNav.toExternal({
