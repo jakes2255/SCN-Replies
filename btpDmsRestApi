@@ -1,0 +1,36 @@
+const fs = require("fs");
+const FormData = require("form-data");
+const axios = require("axios");
+
+// Assuming filedata has: { fileName: 'test.pdf', filePath: './test.pdf' }
+
+async function _createDocument(sFolderName, folderCreateURL, filedata) {
+  const formData = new FormData();
+
+  formData.append("cmisaction", "createDocument");
+  formData.append("propertyId[0]", "cmis:name");
+  formData.append("propertyValue[0]", filedata.fileName);
+  formData.append("propertyId[1]", "cmis:objectTypeId");
+  formData.append("propertyValue[1]", "cmis:document");
+  formData.append("_charset_", "UTF-8");
+  formData.append("includeAllowableActions", "true");
+  formData.append("succinct", "true");
+
+  // Read the file as buffer
+  const fileBuffer = fs.readFileSync(filedata.filePath);
+  formData.append("media", fileBuffer, {
+    filename: filedata.fileName,
+    contentType: "application/pdf" // adjust this based on file type
+  });
+
+  const headers = formData.getHeaders();
+
+  try {
+    const response = await axios.post(folderCreateURL, formData, { headers });
+    console.log("Document uploaded successfully");
+    return response.data.succinctProperties["cmis:objectId"];
+  } catch (error) {
+    console.error("Upload failed:", error.response?.data || error.message);
+    return null;
+  }
+}
