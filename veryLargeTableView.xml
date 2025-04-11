@@ -1,0 +1,19 @@
+<Table id="myTable"
+       growing="true"
+       growingThreshold="50"
+       growingScrollToLoad="true"
+       items="{
+         path: '/Products',
+         parameters: {
+           $count: true
+         }
+       }">
+  <columns>...</columns>
+  <items>
+    <ColumnListItem>
+      <cells>
+        <!-- Bind your cell data here -->
+      </cells>
+    </ColumnListItem>
+  </items>
+</Table>
