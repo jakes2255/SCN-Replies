@@ -1,0 +1,16 @@
+<Annotations Target="MyService.Orders">
+    <Annotation Term="Common.SideEffects">
+        <Record>
+            <PropertyValue Property="SourceProperties">
+                <Collection>
+                    <PropertyPath>approvalStatus</PropertyPath>
+                </Collection>
+            </PropertyValue>
+            <PropertyValue Property="TargetEntities">
+                <Collection>
+                    <NavigationPropertyPath>to_SalesOrderItems</NavigationPropertyPath>
+                </Collection>
+            </PropertyValue>
+        </Record>
+    </Annotation>
+</Annotations>
