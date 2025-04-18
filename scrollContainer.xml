@@ -1,0 +1,7 @@
+<ScrollContainer
+		height="100%"
+		width="100%"
+		vertical="true"
+		focusable="true">
+		<Image src="{img>/products/pic1}" width="{/width}" />
+	</ScrollContainer>
