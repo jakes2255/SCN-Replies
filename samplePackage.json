@@ -1,0 +1,10 @@
+"cds": {
+  "requires": {
+    "test-destination": {
+      "kind": "rest",
+      "credentials": {
+        "destination": "test"
+      }
+    }
+  }
+}
